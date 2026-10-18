@@ -1,6 +1,8 @@
 # The Duo Protocol
 
-A static, responsive League of Legends duo queue playbook for **Duo One (Mid / ADC)** and **Duo Two (Jungle / Top)**. Desktop uses full-screen chapters with a left navigation rail; mobile uses a scrollable layout. The guide includes a five-technique wave lab, a mid–jungle decision tool, a six-phase 0–45 minute game clock, four role pairings, seven coached pain-point scenarios, champion cards, and a printable field card. It works without a framework or build step.
+A static, responsive League of Legends duo queue playbook for **Duo One (Mid / ADC)** and **Duo Two (Jungle / Top)**. Choose one of four role pairings once; every chapter updates both players' jobs and their shared call. Desktop uses full-screen chapters with a left rail; mobile stacks the content and scrolls normally.
+
+The guide contains **27 two-player operations** across draft, route × wave, play windows, a 0–45 minute clock, map conversion, and recovery. Every operation has a state read, both players' actions, a spoken sync, go/abort/fallback gates, a conversion target, and a replay check. Coach Depth opens the underlying mechanic and reasoning. The Evidence chapter holds direct sources and the patch 26.20 champion-rate snapshot.
 
 ## Run locally
 
@@ -14,10 +16,12 @@ Vercel can deploy this repository as a **static site** with the root directory a
 
 ## Patch and sources
 
-Reviewed **October 18, 2026** for standard ranked Summoner's Rift on **patch 26.20**. Riot schedules 26.21 for October 21. Champion rates are from Mobalytics Emerald+ ranked solo, all regions, on 26.20. Rates are snapshot data and should be reviewed after each patch.
+Reviewed **October 18, 2026** for standard ranked Summoner's Rift on **patch 26.20**. Riot schedules 26.21 for October 21. Champion rates are from Mobalytics Emerald+ ranked solo, all regions, on 26.20. Rates are snapshot data and should be reviewed after each patch. Use Riot's patch notes for current system timings; some evergreen coaching guides retain older exact numbers.
 
 - [Riot 26.20 notes](https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/)
 - [Riot 2026 season systems](https://www.leagueoflegends.com/en-us/news/game-updates/patch-26-1-notes/)
+- [Riot 26.9 wave and quest updates](https://www.leagueoflegends.com/en-gb/news/game-updates/league-of-legends-patch-26-9-notes/)
+- [Riot 26.19 Teleport updates](https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-19-notes/)
 - [Riot patch schedule](https://support-leagueoflegends.riotgames.com/hc/en-us/articles/360018987893-Patch-Schedule-League-of-Legends)
 - [Mobalytics tier list](https://mobalytics.gg/lol/tier-list)
 - [Mobalytics wave management](https://mobalytics.gg/lol/guides/wave-management)
@@ -33,5 +37,7 @@ Reviewed **October 18, 2026** for standard ranked Summoner's Rift on **patch 26.
 - [Summoner School: mid game conversion (July 2026)](https://www.reddit.com/r/summonerschool/comments/1v2d7xe/how_to_play_midgame/)
 
 The community links identify recurring player questions. The play calls and decision tools are editorial heuristics, not statistical claims. The site links to original guides and discussion threads rather than reproducing their text.
+
+Content is stored in content-early.js and content-late.js; script.js renders the selected pairing and chapter. The pairing is encoded in the pair query parameter (mj, mt, aj, or at), with the chapter in the URL hash.
 
 Champion splash art loads from Riot's Data Dragon CDN. This is an independent fan guide and is not endorsed by Riot Games or Mobalytics.
