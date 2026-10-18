@@ -1,34 +1,34 @@
 const PAIRS = {
   mj: {
-    label: 'MID + JUNGLE', mode: 'TOGETHER ON MAP', oneRole: 'MID', twoRole: 'JUNGLE',
+    label: 'MID + JUNGLE', mode: 'SYNCED ROUTES', oneRole: 'MID', twoRole: 'JUNGLE',
     oneChamps: 'VEX / EKKO / XERATH', twoChamps: 'WUKONG / RAMMUS',
-    oneJob: 'Own the next mid wave and announce the moment it reaches tower. Keep health, mana and control ready for the same river side.',
-    twoJob: 'Name the clear direction and arrival time. Cover the crash, then choose gank, river, vision or exit with Duo One.',
-    win: 'Mid priority becomes a two-player move. A kill is valuable only after the wave is fixed and one map asset is taken.',
+    oneJob: 'Call when Mid wave will crash and whether you can leave with health, mana and crowd control.',
+    twoJob: 'Call your clear direction and arrival wave. Cover Mid’s crash, then choose the gank, river move, ward or reset together.',
+    win: 'Mid’s crash opens the route; Jungle’s route makes the crash safe. After a kill, fix the wave and take one reachable map gain.',
     artOne: 'Vex', artTwo: 'MonkeyKing'
   },
   mt: {
-    label: 'MID + TOP', mode: 'TOGETHER THROUGH PRESSURE', oneRole: 'MID', twoRole: 'TOP',
+    label: 'MID + TOP', mode: 'SYNCED PRESSURE', oneRole: 'MID', twoRole: 'TOP',
     oneChamps: 'VEX / EKKO / XERATH', twoChamps: 'ORNN / GAREN',
-    oneJob: 'Call mid crash and enemy movement. Match the top wave timer only when your lane can move without losing a full wave.',
-    twoJob: 'Call wave direction, opponent response and Teleport status. Create the second threat or arrive before the fight starts.',
-    win: 'Two lanes peak at once. The opponent must answer a top wave while mid takes river, a tower or the fight with a real numbers edge.',
+    oneJob: 'Call your next Mid crash and the enemy Mid’s move. Take the top-side route only when your wave lets you leave.',
+    twoJob: 'Call your Top wave, enemy response and Teleport timing. Build the second threat or join before the fight starts.',
+    win: 'Crash Mid and Top waves together. If opponents answer one lane, the other takes a safe tower, river move or numbers edge.',
     artOne: 'Ekko', artTwo: 'Ornn'
   },
   aj: {
-    label: 'ADC + JUNGLE', mode: 'TOGETHER ON MAP', oneRole: 'ADC', twoRole: 'JUNGLE',
+    label: 'ADC + JUNGLE', mode: 'SYNCED ROUTES', oneRole: 'ADC', twoRole: 'JUNGLE',
     oneChamps: 'JINX / VEIGAR', twoChamps: 'WUKONG / RAMMUS',
-    oneJob: 'State bot wave, support position, HP and crowd control. Preserve farm and role-quest progress before any dragon call.',
-    twoJob: 'Path to a real bot window and verify support can join. Cover the crash after a gank without taking the carry’s wave.',
-    win: 'Bot wave and jungle route meet at the same time. Convert a safe gank into a crash, plate, dragon setup or synchronized reset.',
+    oneJob: 'Call bot wave, support position, HP and crowd control. Preserve farm and lane quest progress before a dragon call.',
+    twoJob: 'Path toward a real bot window and confirm support can join. Cover the crash, then agree on reset or dragon without taking the carry’s farm.',
+    win: 'Bot’s crash and Jungle’s arrival line up. Convert a safe play into a plate, dragon setup or shared reset after the wave is fixed.',
     artOne: 'Jinx', artTwo: 'MonkeyKing'
   },
   at: {
-    label: 'ADC + TOP', mode: 'TOGETHER THROUGH PRESSURE', oneRole: 'ADC', twoRole: 'TOP',
+    label: 'ADC + TOP', mode: 'SYNCED PRESSURE', oneRole: 'ADC', twoRole: 'TOP',
     oneChamps: 'JINX / VEIGAR', twoChamps: 'ORNN / GAREN',
-    oneJob: 'Call the fight-side wave, support cover and whether the team can safely delay. Keep the carry alive to cash the cross-map pressure.',
-    twoJob: 'Set a side wave, identify the defender, and call Teleport or trade before the objective fight begins.',
-    win: 'A distant duo creates simultaneous demands: ADC controls the protected lane while Top forces a response or arrives in time.',
+    oneJob: 'Call bot wave, support cover and how long your team can delay an objective. Stay protected while Top builds side pressure.',
+    twoJob: 'Set Top’s side wave, identify its defender and call whether you will Teleport, trade structure or join before the fight.',
+    win: 'Top forces a side answer while ADC controls a protected lane. If enemies force center, Top calls the trade or Teleport before ADC commits.',
     artOne: 'Jinx', artTwo: 'Garen'
   }
 };
@@ -52,8 +52,8 @@ const CHAPTERS = [
   {id:'draft',num:'01',nav:'DRAFT',title:'PICK THE PLAN.<br><em>THEN THE CHAMPS.</em>',summary:'Two locks, two bans, one shared win condition. Choose who can safely show first and what the composition still needs.'},
   {id:'wave',num:'02',nav:'ROUTE × WAVE',title:'MAKE THE WAVE<br><em>YOUR TIMER.</em>',summary:'A lane move is real when both waves, the route or Teleport, and the enemy response line up.'},
   {id:'windows',num:'03',nav:'PLAY WINDOWS',title:'CREATE THE<br><em>TWO-PLAYER WINDOW.</em>',summary:'Every gank, roam and cross-map trade starts with two reports and one explicit commit.'},
-  {id:'clock',num:'04',nav:'GAME CLOCK',title:'SAME CLOCK.<br><em>SAME CALL.</em>',summary:'Use the next wave and objective timer to decide the play, from the first clear to a 45-minute finish.'},
-  {id:'map',num:'05',nav:'MAP CONVERSION',title:'CASH THE<br><em>PRESSURE.</em>',summary:'Vision, monsters, towers, side waves and Nexus are rewards for a prepared position, not separate errands.'},
+  {id:'clock',num:'04',nav:'GAME CLOCK',title:'SAME CLOCK.<br><em>SAME CALL.</em>',summary:'Match both players’ waves and routes to the next objective timer, from the first clear to a 45-minute finish.'},
+  {id:'map',num:'05',nav:'MAP CONVERSION',title:'CASH THE<br><em>PRESSURE.</em>',summary:'Both players build the position. Then turn it into vision, monsters, towers, side waves or Nexus.'},
   {id:'recovery',num:'06',nav:'RECOVERY',title:'RESET THE<br><em>CALL.</em>',summary:'When the map breaks, both players name the loss, choose a safe exchange and rebuild the next window.'},
   {id:'sources',num:'07',nav:'EVIDENCE',title:'KNOW WHAT IS CURRENT.'}
 ];
@@ -130,19 +130,19 @@ function makeOperationChapter(meta){
   section.setAttribute('aria-labelledby',meta.id + '-heading');
   section.innerHTML =
     '<div class="chapter-inner operation-inner">' +
-      '<div class="section-head"><div><span class="eyebrow">' + meta.num + ' / TWO-PLAYER OPERATION</span><h2 id="' + meta.id + '-heading">' + meta.title + '</h2></div><p>' + meta.summary + '</p></div>' +
+      '<div class="section-head"><div><span class="eyebrow">' + meta.num + ' / DUO DECISION</span><h2 id="' + meta.id + '-heading">' + meta.title + '</h2></div><p>' + meta.summary + '</p></div>' +
       '<div class="operation-tabs" role="group" aria-label="' + meta.nav + ' operation"></div>' +
       '<article class="operation-panel">' +
         '<div class="operation-main">' +
           '<div class="operation-lead"><div class="operation-art"><span class="art-index"></span><div class="art-signal"><i></i><i></i><i></i></div></div><div class="operation-read"><span class="label operation-label"></span><h3 class="operation-title"></h3><p class="operation-state"></p></div></div>' +
           '<div class="beat-track" aria-label="Duo execution sequence"><span>01 READ</span><span>02 PREP</span><span>03 SYNC</span><span>04 COMMIT</span><span>05 CONVERT</span></div>' +
           '<div class="duo-cards"><div class="player-card player-one"><div class="player-id"><span>01 / DUO ONE</span><b class="one-role"></b></div><p class="one-action"></p></div><div class="player-card player-two"><div class="player-id"><span>02 / DUO TWO</span><b class="two-role"></b></div><p class="two-action"></p></div></div>' +
-          '<div class="sync-exchange"><span class="exchange-icon">↔</span><div><span class="label">THE SHARED CALL / SAY IT OUT LOUD</span><strong class="sync-text"></strong></div></div>' +
+          '<div class="sync-exchange"><span class="exchange-icon">↔</span><div><span class="label">THE DUO CALL / BOTH CONFIRM</span><strong class="sync-text"></strong></div></div>' +
           '<div class="replay-check"><span>REPLAY CHECK</span><p class="drill-text"></p></div>' +
         '</div>' +
-        '<aside class="decision-rail"><div class="gate gate-go"><span>GO WHEN</span><p class="go-text"></p></div><div class="gate gate-abort"><span>ABORT WHEN</span><p class="abort-text"></p></div><div class="gate gate-fallback"><span>IF NO / TRADE</span><p class="fallback-text"></p></div><div class="gate gate-convert"><span>AFTER SUCCESS</span><p class="convert-text"></p></div></aside>' +
+        '<aside class="decision-rail"><div class="gate gate-go"><span>GO WHEN</span><p class="go-text"></p></div><div class="gate gate-abort"><span>ABORT WHEN</span><p class="abort-text"></p></div><div class="gate gate-fallback"><span>IF THE PLAY IS OFF</span><p class="fallback-text"></p></div><div class="gate gate-convert"><span>CONVERT THE WIN</span><p class="convert-text"></p></div></aside>' +
       '</article>' +
-      '<div class="operation-footer"><div><span class="live-dot"></span><span class="operation-count"></span><span class="footer-pair"></span></div><button type="button" class="depth-toggle">COACH DEPTH <span>＋</span></button></div>' +
+      '<div class="operation-footer"><div><span class="live-dot"></span><span class="operation-count"></span><span class="footer-pair"></span></div><button type="button" class="depth-toggle">WHY + HOW <span>＋</span></button></div>' +
       '<div class="depth-panel" hidden><div><span class="label">WHY THIS WORKS</span><p class="why-text"></p></div><div><span class="label">MECHANIC TO REHEARSE</span><p class="mechanic-text"></p></div><button type="button" class="depth-close" aria-label="Close coach depth">×</button></div>' +
     '</div>';
   section.querySelector('.depth-toggle').addEventListener('click', () => {
@@ -296,6 +296,11 @@ buildChapters();
 setPair(pairKey);
 renderSources();
 syncMode();
+window.addEventListener('load',()=>{
+  if(!desktop.matches && location.hash){
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'instant',block:'start'});
+  }
+});
 
 pairSelect.addEventListener('change',()=>setPair(pairSelect.value));
 document.querySelectorAll('[data-pair]').forEach(button=>button.addEventListener('click',()=>setPair(button.dataset.pair)));
