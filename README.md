@@ -2,7 +2,7 @@
 
 A static, responsive League of Legends duo queue playbook for **Duo One (Mid / ADC)** and **Duo Two (Jungle / Top)**. Choose one of four role pairings once; every chapter updates both players' jobs and their shared call. Desktop uses full-screen chapters with a left rail; mobile stacks the content and scrolls normally.
 
-The guide contains **27 two-player operations** across draft, route × wave, play windows, a 0–45 minute clock, map conversion, and recovery. Every operation has a state read, both players' actions, a spoken sync, go/abort/fallback gates, a conversion target, and a replay check. Coach Depth opens the underlying mechanic and reasoning. The Evidence chapter holds direct sources and the patch 26.20 champion-rate snapshot.
+The guide contains **28 two-player operations** across draft, route × wave, play windows, a 0–45 minute clock, map conversion, and recovery. Every operation has a state read, both players' actions, a spoken sync, go/abort/fallback gates, a conversion target, and a replay check. Coach Depth opens the underlying mechanic and reasoning. The Evidence chapter holds direct sources and the patch 26.20 champion-rate snapshot.
 
 ## Run locally
 
@@ -21,6 +21,8 @@ Reviewed **October 18, 2026** for standard ranked Summoner's Rift on **patch 26.
 - [Riot 26.20 notes](https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/)
 - [Riot 2026 season systems](https://www.leagueoflegends.com/en-us/news/game-updates/patch-26-1-notes/)
 - [Riot 26.9 wave and quest updates](https://www.leagueoflegends.com/en-gb/news/game-updates/league-of-legends-patch-26-9-notes/)
+- [Riot 26.11 mid quest update](https://www.leagueoflegends.com/en-ph/news/game-updates/league-of-legends-patch-26-11-notes/)
+- [Riot 26.12 Top Teleport update](https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-12-notes/)
 - [Riot 26.19 Teleport updates](https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-19-notes/)
 - [Riot patch schedule](https://support-leagueoflegends.riotgames.com/hc/en-us/articles/360018987893-Patch-Schedule-League-of-Legends)
 - [Mobalytics tier list](https://mobalytics.gg/lol/tier-list)

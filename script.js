@@ -33,11 +33,25 @@ const PAIRS = {
   }
 };
 
+const PAIR_ART = {
+  mj: ['Vex','Ekko','Xerath','MonkeyKing','Rammus'],
+  mt: ['Vex','Ekko','Xerath','Ornn','Garen'],
+  aj: ['Jinx','Veigar','MonkeyKing','Rammus'],
+  at: ['Jinx','Veigar','Ornn','Garen']
+};
+
+const PATCH_CHECK = {
+  mj: 'DUO ONE checks Mid wave and Vex/Ekko/Xerath changes. DUO TWO checks first clear, Wukong/Rammus and objectives. Rehearse one changed route × wave call.',
+  mt: 'DUO ONE checks Mid wave and pool changes. DUO TWO checks Top quest, Teleport and Ornn/Garen. Rehearse one cross-map call.',
+  aj: 'DUO ONE checks bot wave, support matchup and Jinx/Veigar. DUO TWO checks first clear, Wukong/Rammus and dragon timing. Rehearse one bot crash × route call.',
+  at: 'DUO ONE checks bot wave, support matchup and Jinx/Veigar. DUO TWO checks Top quest, Teleport and Ornn/Garen. Rehearse one center-and-side call.'
+};
+
 const CHAPTERS = [
   {id:'command',num:'00',nav:'COMMAND',title:'PLAY THE SAME GAME.'},
   {id:'draft',num:'01',nav:'DRAFT',title:'PICK THE PLAN.<br><em>THEN THE CHAMPS.</em>',summary:'Two locks, two bans, one shared win condition. Choose who can safely show first and what the composition still needs.'},
-  {id:'wave',num:'02',nav:'ROUTE × WAVE',title:'MAKE THE WAVE<br><em>YOUR TIMER.</em>',summary:'A lane move is only real when the wave, partner route and enemy response line up.'},
-  {id:'windows',num:'03',nav:'PLAY WINDOWS',title:'CREATE THE<br><em>TWO-PLAYER WINDOW.</em>',summary:'Every gank, roam and counterplay starts with two reports and one explicit commit.'},
+  {id:'wave',num:'02',nav:'ROUTE × WAVE',title:'MAKE THE WAVE<br><em>YOUR TIMER.</em>',summary:'A lane move is real when both waves, the route or Teleport, and the enemy response line up.'},
+  {id:'windows',num:'03',nav:'PLAY WINDOWS',title:'CREATE THE<br><em>TWO-PLAYER WINDOW.</em>',summary:'Every gank, roam and cross-map trade starts with two reports and one explicit commit.'},
   {id:'clock',num:'04',nav:'GAME CLOCK',title:'SAME CLOCK.<br><em>SAME CALL.</em>',summary:'Use the next wave and objective timer to decide the play, from the first clear to a 45-minute finish.'},
   {id:'map',num:'05',nav:'MAP CONVERSION',title:'CASH THE<br><em>PRESSURE.</em>',summary:'Vision, monsters, towers, side waves and Nexus are rewards for a prepared position, not separate errands.'},
   {id:'recovery',num:'06',nav:'RECOVERY',title:'RESET THE<br><em>CALL.</em>',summary:'When the map breaks, both players name the loss, choose a safe exchange and rebuild the next window.'},
@@ -46,9 +60,11 @@ const CHAPTERS = [
 
 const SOURCE_SETS = {
   rules: [
-    ['Riot · live patch 26.20','https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/'],
+    ['Riot · patch 26.20 notes','https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-20-notes/'],
     ['Riot · 2026 season systems','https://www.leagueoflegends.com/en-us/news/game-updates/patch-26-1-notes/'],
     ['Riot · 26.9 wave and role quest updates','https://www.leagueoflegends.com/en-gb/news/game-updates/league-of-legends-patch-26-9-notes/'],
+    ['Riot · 26.11 mid quest update','https://www.leagueoflegends.com/en-ph/news/game-updates/league-of-legends-patch-26-11-notes/'],
+    ['Riot · 26.12 Top Teleport update','https://www.leagueoflegends.com/en-sg/news/game-updates/league-of-legends-patch-26-12-notes/'],
     ['Riot · 26.19 Teleport update','https://www.leagueoflegends.com/en-us/news/game-updates/league-of-legends-patch-26-19-notes/'],
     ['Riot · patch schedule','https://support-leagueoflegends.riotgames.com/hc/en-us/articles/360018987893-Patch-Schedule-League-of-Legends'],
     ['Mobalytics · live tier list','https://mobalytics.gg/lol/tier-list']
@@ -105,6 +121,7 @@ const operationIndex = Object.fromEntries(CHAPTERS.filter(c => !['command','sour
 function text(id,value){document.getElementById(id).textContent = value || '';}
 function splash(id){return 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + id + '_0.jpg';}
 function opFor(id){const data = id === 'draft' || id === 'wave' || id === 'windows' ? window.DUO_EARLY : window.DUO_LATE;return data[id];}
+function pairedField(op,field){return op[field + 'ByPair']?.[pairKey] ?? op[field];}
 
 function makeOperationChapter(meta){
   const section = document.createElement('section');
@@ -163,24 +180,27 @@ function renderOperation(id){
     '<button type="button" data-index="' + i + '" aria-pressed="' + (i===operationIndex[id]) + '" class="' + (i===operationIndex[id]?'active':'') + '"><span>' + String(i+1).padStart(2,'0') + '</span>' + item.label.replace(/^\d+\s*\/\s*/,'') + '</button>'
   ).join('');
   section.querySelector('.operation-label').textContent=op.label.replace(/^\d+\s*\/\s*/,'') + ' / ' + pair.label;
-  section.querySelector('.operation-title').textContent=op.title;
-  section.querySelector('.operation-state').textContent=op.read;
+  section.querySelector('.operation-title').textContent=pairedField(op,'title');
+  section.querySelector('.operation-state').textContent=pairedField(op,'read');
   section.querySelector('.one-role').textContent=pair.oneRole;
   section.querySelector('.two-role').textContent=pair.twoRole;
-  section.querySelector('.one-action').textContent=op.one[pair.oneRole.toLowerCase()];
-  section.querySelector('.two-action').textContent=op.two[pair.twoRole.toLowerCase()];
+  section.querySelector('.one-action').textContent=op.oneByPair?.[pairKey] ?? op.one[pair.oneRole.toLowerCase()];
+  section.querySelector('.two-action').textContent=op.twoByPair?.[pairKey] ?? op.two[pair.twoRole.toLowerCase()];
   section.querySelector('.sync-text').textContent=op.sync[pairKey];
-  section.querySelector('.go-text').textContent=op.go;
-  section.querySelector('.abort-text').textContent=op.abort;
-  section.querySelector('.fallback-text').textContent=op.fallback;
-  section.querySelector('.convert-text').textContent=op.convert;
-  section.querySelector('.drill-text').textContent=op.drill;
-  section.querySelector('.why-text').textContent=op.why;
-  section.querySelector('.mechanic-text').textContent=op.mechanic;
+  section.querySelector('.go-text').textContent=pairedField(op,'go');
+  section.querySelector('.abort-text').textContent=pairedField(op,'abort');
+  section.querySelector('.fallback-text').textContent=pairedField(op,'fallback');
+  section.querySelector('.convert-text').textContent=pairedField(op,'convert');
+  section.querySelector('.drill-text').textContent=pairedField(op,'drill');
+  section.querySelector('.why-text').textContent=pairedField(op,'why');
+  section.querySelector('.mechanic-text').textContent=pairedField(op,'mechanic');
   section.querySelector('.art-index').textContent=String(operationIndex[id]+1).padStart(2,'0') + ' / ' + String(list.length).padStart(2,'0');
   section.querySelector('.operation-count').textContent='OPERATION ' + String(operationIndex[id]+1).padStart(2,'0') + ' / ' + String(list.length).padStart(2,'0');
   section.querySelector('.footer-pair').textContent=pair.label + ' · ' + pair.mode;
-  section.querySelector('.operation-art').style.backgroundImage='linear-gradient(90deg,rgba(7,17,21,.3),rgba(7,17,21,.65)),url("' + splash(op.art) + '")';
+  const artPool=PAIR_ART[pairKey];
+  const requestedArt=pairedField(op,'art');
+  const activeArt=artPool.includes(requestedArt) ? requestedArt : artPool[(operationIndex[id]+CHAPTERS.findIndex(c=>c.id===id))%artPool.length];
+  section.querySelector('.operation-art').style.backgroundImage='linear-gradient(90deg,rgba(7,17,21,.3),rgba(7,17,21,.65)),url("' + splash(activeArt) + '")';
   section.querySelector('.depth-panel').hidden=true;
   section.querySelector('.depth-toggle').setAttribute('aria-expanded','false');
 }
@@ -234,7 +254,7 @@ function setPair(key){
   renderCommand();
   CHAPTERS.filter(c => !['command','sources'].includes(c.id)).forEach(c => renderOperation(c.id));
   const sourcePair=document.getElementById('source-pair');
-  if(sourcePair)sourcePair.textContent='DUO ONE checks lane and champion changes. DUO TWO checks jungle, Top and objective changes. Both rehearse one changed rule before queueing as ' + PAIRS[pairKey].label + '.';
+  if(sourcePair)sourcePair.textContent=PATCH_CHECK[pairKey];
   if(sourceKey==='pool')renderSources();
 }
 

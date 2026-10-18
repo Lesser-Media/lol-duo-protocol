@@ -18,39 +18,78 @@ window.DUO_LATE = {
   clock: [
     {
       id: 'clock-0-3', label: '00–03', title: 'Name the first side before the first wave',
-      read: 'At loading screen, identify both mid–jungle 2v2s, bot support engage, top matchup, and the likely first clear side. Recheck enemy start from actual vision; a late arrival is only a clue.',
-      why: 'The first advantage is knowing whether your partner can actually arrive on the wave you intend to use.',
+      read: 'At loading screen, name both role plans, the likely jungle path, support readiness if bot, and Teleport status if top. Treat an enemy late arrival as a clue, not proof of their start.',
+      readByPair: {
+        mj: 'Name Mid’s first three-wave plan, Jungle’s first route, both mid–jungle 2v2s, and the enemy start evidence.',
+        mt: 'Name each solo-lane wave plan, top-side 2v2 strength, enemy jungle start evidence, and whether Top has Teleport.',
+        aj: 'Name bot’s first wave and support readiness, Jungle’s clear toward or away from bot, and enemy start evidence.',
+        at: 'Name bot wave/support readiness and Top’s first waves/Teleport. Decide whether the pair connects later or trades separate lanes.'
+      },
+      why: 'The first advantage is knowing whether the two lane plans can connect, trade across the map, or must stabilize separately.',
       mechanic: '2026 ranked minions spawn at 0:30, buff camps at 0:55, and Scuttle at 2:55. The first cannon is wave three; lane quests reward time and farm in the assigned lane.',
       art: 'MonkeyKing',
       one: {
-        mid: 'Tell Duo Two whether the first waves will push out, come in, or stay near center. Preserve enough health and your key control spell for the side where their first route ends.',
+        mid: 'Tell Duo Two whether the first waves will push out, come in, or stay near center. Preserve health and your key control spell for the agreed river side; if Duo Two is Top, name whether you can support their top-side wave.',
         adc: 'Tell Duo Two whether bot can contest the first push and whether your support can trade or engage. Keep the opening wave safe for farm and quest progress; do not manufacture a bot fight to fit a jungle route.'
+      },
+      oneByPair: {
+        mj: 'Call your first three-wave direction and the exact crash or hold that matches Jungle’s first route. Keep health and your key control spell for the possible 2v2.',
+        mt: 'Call whether Mid can push toward top river on wave three. If Top is pinned, keep Mid’s wave and prevent the enemy mid from moving first.',
+        aj: 'Call bot wave direction, health, and support engage or peel readiness. Preserve farm and quest progress while Jungle routes toward or away from your lane.',
+        at: 'Call bot wave and support readiness; ask Top whether their wave can pressure or whether TP is actually available. Keep local farm instead of expecting an early cross-map rescue.'
       },
       two: {
         jungle: 'Announce your start camp, clear direction, and earliest realistic arrival before minions meet. Update the route if a lane loses health or wave control; do not treat first Scuttle as mandatory.',
         top: 'Announce whether your lane can push, hold, or only collect XP for the first three waves. Flag the enemy top Teleport and your own planned reset or top-side move before the wave commits.'
       },
       sync: {
-        mj: 'One: “Mid wave three crashes in eight; fear ready.” Two: “I finish raptors into top river; we move only after the crash.”',
+        mj: 'One: “Mid wave three crashes in eight; my setup is ready.” Two: “I finish raptors into top river; we move only after the crash.”',
         mt: 'One: “I can push mid toward top river after this wave.” Two: “My third wave is coming in; no top-side contest until I catch it.”',
         aj: 'One: “Bot wave comes to us; support engage ready.” Two: “I finish bot side in twenty; hold it outside tower if safe.”',
         at: 'One: “Bot has first push, enemy jungle unknown.” Two: “Top cannot move; I will call if their jungle shows here so you can spend the bot window.”'
       },
-      go: 'Both can arrive with health, cooldowns, and a wave that will not cost the lane more than the play can earn.',
+      go: 'Both have named their first wave, resources, and whether this cycle is a connection or a cross-map trade.',
+      goByPair: {
+        mj: 'Mid can hold for a gank or crash for river as Jungle finishes toward that side; both have health and setup.',
+        mt: 'Mid and Top name when their separate waves give top-side priority; neither leaves a large incoming wave.',
+        aj: 'ADC has a bot wave plan and support status; Jungle routes toward a gank or bot river without forcing the lane.',
+        at: 'ADC can use a bot window while Top keeps an independent wave or TP plan; neither assumes a cross-map walk.'
+      },
       abort: 'One player says “no move,” the enemy has a clearer first move, or enemy jungle information contradicts the opening read.',
-      fallback: 'Take the safe wave and camp, place a defensive ward on the threatened side, and name the next meeting wave.',
-      convert: 'After a successful gank, agree on the crash before touching the wave; then choose one plate, ward, camp, or reset that fits the respawn window.',
-      drill: 'Replay the first three waves: did both players know the route, wave direction, and first possible move before the river fight?'
+      abortByPair: {
+        mj: 'Mid says no move for the river wave, or the enemy mid–jungle pair arrives first.',
+        mt: 'Either wave is pinned; do not force a top-side connection. Keep the cross-map trade if it remains safe.',
+        aj: 'Support cannot follow, bot wave is pinned, or Jungle arrives into an unseen enemy countergank.',
+        at: 'Bot cannot spend its push or Top has no safe pressure/TP; do not invent an early cross-map join.'
+      },
+      fallback: 'Each player takes the safe local wave or camp, protects the threatened entrance, and names the next shared timing.',
+      convert: 'After the first successful play, fix the affected wave, then choose one plate, ward, camp, or reset before defenders return.',
+      drill: 'Replay the first three waves: did both know the route or Teleport, wave direction, and first connect or trade decision?'
     },
     {
       id: 'clock-3-8', label: '03–08', title: 'Fund the first move with a real crash',
       read: 'Before a gank, invade, or first epic monster, check the actual wave, both health bars, key CC, opposing jungle location, and whether the non-duo teammate can join.',
-      why: 'Lane priority is useful only when the laner can leave alive and arrive before the opponent. A ping cannot erase a stacked wave at tower.',
+      readByPair: {
+        mj: 'Before a gank or invade, check Mid wave, both health bars, key CC, and where enemy Jungle can counter.',
+        mt: 'Before a top-side move, compare Mid and Top crash timing, both health bars, and where enemy Jungle can counter.',
+        aj: 'Before a bot gank or dragon, check bot wave, support position, ADC health, and enemy mid–jungle response.',
+        at: 'Before bot or top pressure, compare both waves, support status, Teleport timing, and enemy Jungle location.'
+      },
+      why: 'Lane priority helps only when it creates a real first move or a cross-map cost for the opponent. A ping cannot erase a stacked wave at tower.',
       mechanic: 'A gank has more lane length when the opponent is near center or your side. If your lane is pushed under enemy tower, convert the crash into vision or a reset unless a dive has a proven numbers and health advantage.',
+      mechanicByPair: {
+        mt: 'A stacked top wave holds the defender at tower while a separate mid crash frees Mid to move. Both waves must land close enough for a safe top-side action.',
+        at: 'ADC’s bot crash buys a short local window; Top can only influence it by a timely safe Teleport. Otherwise Top converts their own wave into pressure.'
+      },
       art: 'Vex',
       one: {
-        mid: 'If Duo Two wants a gank, trim and hold the wave near your side without losing health. If they want river or an invade, build a push and call when it actually reaches the enemy tower.',
+        mid: 'If your jungler is approaching for a gank, trim and hold near your side without losing health. For a shared river move or top-side trade, build a push and call when it actually reaches tower.',
         adc: 'Call support position and whether bot wave is holding, stacking, or crashing. Preserve your escape spell while the enemy jungle is missing; after a kill, explicitly ask for help crashing if the wave would freeze against you.'
+      },
+      oneByPair: {
+        mj: 'Hold or trim Mid near your side for a named jungle gank; for an invade, crash before Jungle enters river. Call the actual arrival wave and your CC status.',
+        mt: 'Build Mid’s crash to overlap Top’s stacked wave, then move top side only if your return wave is affordable. Otherwise pin enemy mid while Top takes the safe trade.',
+        at: 'State bot wave, support readiness, and what local dragon pressure is possible. Ask Top for a timed TP or top-side trade; do not ask them to walk across the map.'
       },
       two: {
         jungle: 'Finish the camp toward the called lane window, not toward a theoretical fight. If nearby lanes are pinned, change route, cover a crash, or trade the opposite side instead of entering river alone.',
@@ -59,24 +98,40 @@ window.DUO_LATE = {
       sync: {
         mj: 'One: “Two waves stacking; crash in twelve.” Two: “I cover the crash, then we enter river together.”',
         mt: 'One: “Mid clears now; I lean top side.” Two: “Top crash is one wave later; wait for me before we force their jungle.”',
-        aj: 'One: “Wave held near us, support has hook.” Two: “I am one camp away; do not change your lane posture early.”',
-        at: 'One: “Bot crash gives me a short river window.” Two: “I can move from top after my cannon, otherwise take bot vision and reset.”'
+        aj: 'One: “Wave held near us, support has CC ready.” Two: “I am one camp away; do not change your lane posture early.”',
+        at: 'One: “Bot crash gives me a short river window.” Two: “Top cannon crashes; I take the plate while you control bot. No cross-map walk.”'
       },
-      go: 'The pair names the same destination and arrival wave, and the enemy cannot rotate first for free.',
+      go: 'The pair names the same timing and whether they are connecting or trading; the enemy cannot answer both for free.',
+      goByPair: {
+        mj: 'Mid crash lands as Jungle reaches river, or a held mid wave exposes the enemy to a gank.',
+        mt: 'Mid and Top crashes overlap for upper river pressure, or each threatens a separate structure safely.',
+        aj: 'Bot wave and support allow the gank or dragon entry when Jungle reaches the same side.',
+        at: 'Bot crash and top crash create separate rewards; a top Teleport joins only with a safe landing and timing.'
+      },
       abort: 'Enemy support or jungler is missing on the entry path, support cannot join bot, or the planned wave is stuck under your own tower.',
-      fallback: 'Use the safer crash for a recall or ward and wait for the next camp/wave alignment; conceding one river camp is better than losing lane XP and dying.',
-      convert: 'A burned Flash becomes a timed repeat only if the next route is efficient; a kill becomes a crash first, then a nearby objective or plate.',
-      drill: 'Log each early river entry: could both players move when the entry began, and what minions or camps were paid for it?'
+      abortByPair: {
+        mj: 'Mid wave is pinned, opposing mid moves first, or enemy jungle is missing on the river entry.',
+        mt: 'Either crash fails or enemy jungle can counter the top-side dive; trade waves instead.',
+        aj: 'Support cannot follow, bot wave is pinned, or the countergank route is unwarded.',
+        at: 'Top cannot walk into a bot play; without a safe TP, keep separate lane rewards or stabilize.'
+      },
+      fallback: 'Use the safer crash for a recall or ward and wait for the next lane alignment; conceding a low-value contest beats losing XP and dying.',
+      convert: 'Record a burned Flash for the next viable wave; after a kill, crash before claiming a nearby objective or plate.',
+      drill: 'Log each early duo commitment: could each player perform the promised job, and what wave, camp, or Teleport was paid for it?'
     },
     {
       id: 'clock-8-15', label: '08–15', title: 'Turn a lead into a structure, not another chase',
-      read: 'After a pick, count enemy return time, your health and mana, the next wave, nearby turret health, objective status, and each role quest’s progress.',
+      read: 'After a pick, forced recall, or stacked wave, count enemy return time, resources, the next wave, nearby turret health, objective status, and role quest progress.',
       why: 'This is the window where a 15-minute finish becomes possible, but only if the pair spends each advantage before defenders return.',
       mechanic: 'In 2026, plates remain on lane turrets and the first destroyed turret grants extra gold. A short safe push can have value even if the whole tower cannot fall.',
       art: 'Jinx',
       one: {
-        mid: 'Crash immediately after forcing enemy mid out, then move on the side Duo Two can cover. With Vex or Ekko, use the exit window for a two-player pick; with Xerath, chip the reachable turret from vision rather than chasing into fog.',
+        mid: 'Crash immediately after forcing enemy mid out, then move where Duo Two can cover or pressure at the same time. Vex or Ekko can use the exit window for a pick; Xerath can chip the reachable turret from vision rather than chase into fog.',
         adc: 'After a bot win, state whether your wave needs help to crash and whether support can escort forward. Take reachable plate damage only while the enemy jungle and mid response are accounted for; preserve your bot quest farm.'
+      },
+      oneByPair: {
+        mj: 'Crash Mid after a pick and tell Jungle whether the wave buys a plate, ward, or same-side camp. Leave the turret before enemy mid returns.',
+        mt: 'Crash Mid as Top’s stacked wave hits so defenders must answer both. Move top only if the dive has vision and a safe path; otherwise hit Mid and reset.'
       },
       two: {
         jungle: 'Choose the one conversion that can finish before the enemy returns: crash, plate/tower, nearby camp, or epic monster. If the lane needs a reset, cover its exit instead of forcing a second gank.',
@@ -89,10 +144,16 @@ window.DUO_LATE = {
         at: 'One: “Bot tower is one safe push away.” Two: “I hold top pressure; if their jungler shows top, you take tower and reset.”'
       },
       go: 'A lane wave reaches the target before the defender and the pair can leave safely after claiming value.',
-      abort: 'The wave is gone, the enemy returns before the structure falls, or a second enemy moves through unwarded space.',
+      goByPair: {
+        mj: 'Mid crash reaches tower while Jungle covers the collapse; both can leave before enemy mid returns.',
+        mt: 'Mid and top waves pressure two turrets at once, or one crashes as the other player controls the response route.',
+        aj: 'Bot wave reaches tower with support and Jungle covering; ADC keeps farm and has an exit after the plate.',
+        at: 'Top pressure reveals enemy jungle or draws a defender as ADC’s covered bot wave reaches tower.'
+      },
+      abort: 'The wave is gone, the enemy returns before a safe hit pays, or a second enemy moves through unwarded space.',
       fallback: 'Bank the earned gold with a synchronized reset and protect the next incoming wave; do not extend a won play into a delayed death.',
       convert: 'After first tower, call the next lane assignment before walking out of base so the ADC, mid, and top do not share one wave.',
-      drill: 'For every pre-15 kill, record whether it became a crash, plate, tower, safe camp, objective, or only a chase.'
+      drill: 'For every pre-15 advantage, record whether it became a crash, plate, tower, safe camp, objective, or only a chase.'
     },
     {
       id: 'clock-15-20', label: '15–20', title: 'Assign lanes; make the next move together',
@@ -101,7 +162,7 @@ window.DUO_LATE = {
       mechanic: 'From 14:00, waves spawn every 25 seconds in 2026 ranked. The shorter cycle makes a side catch followed by a timely return more important than a long aimless roam.',
       art: 'Ekko',
       one: {
-        mid: 'If your ADC and support take mid, collect the nearest safe side wave and say when you will return. Push only as far as Duo Two can cover; Vex or Xerath should not disappear deep into a dark side lane.',
+        mid: 'If your ADC and support take mid, collect the nearest safe side wave and say when you will return. Push only to the line supported by vision and Duo Two’s current position; Vex or Xerath should not disappear deep into fog.',
         adc: 'Take the short mid lane with support after bot tower falls when the rotation is safe. Farm the wave, then move with your escort toward vision or the next fight; avoid a solo deep side wave.'
       },
       two: {
@@ -114,47 +175,77 @@ window.DUO_LATE = {
         aj: 'One: “I have mid wave, support beside me.” Two: “I clear the entrance after you push; follow me only when it lands.”',
         at: 'One: “I hold mid with support; tell me when top wave hits.” Two: “Top crashes in fifteen; draw them there, then we step forward together.”'
       },
-      go: 'The two relevant waves are caught and pushed, exits are warded, and both know who is protecting the ADC.',
+      go: 'The relevant waves are assigned, exits are known, and both know whether the ADC has an escort.',
+      goByPair: {
+        mj: 'Mid catches a safe side wave while Jungle protects the return route; both reconnect before the central fight.',
+        mt: 'Mid and Top own different waves that reach useful pressure together; both can reach or trade the next fight.',
+        aj: 'ADC farms mid with support while Jungle controls its adjacent entrance; the side wave has another owner.',
+        at: 'ADC holds mid with escort as Top’s side wave advances; Top groups if the center cannot safely delay.'
+      },
       abort: 'A carry must walk alone into darkness, the side pusher has no escape/Teleport, or the central team is already too far forward.',
-      fallback: 'Catch the nearer wave under safer vision, ping the team back from a premature fight, and reconnect on the next 25-second cycle.',
+      fallback: 'Catch the nearer wave under safer vision, ping back from a premature fight, and align the next 25-second cycle.',
       convert: 'Use the forced defender as a numbers window for a mid turret, controlled jungle entrance, or neutral setup rather than another shared mid wave.',
       drill: 'At 15:00 and 18:00 pause the replay: who owned each lane, and was one wave lost while two allies shared another?'
     },
     {
       id: 'clock-20-30', label: '20–30', title: 'Make Baron a consequence of pressure',
       read: 'Check the mid and opposite side waves, enemy jungler/Smite, major ultimates, sweep and Faelight availability, and who can turn on an entering enemy.',
-      why: 'A rushed Baron is a long, visible commitment. Two synced players can force the opponent to answer a wave first and enter the river second.',
+      why: 'A rushed Baron is a long, visible commitment. Two synced players make the opponent answer a wave before it can contest the pit.',
       mechanic: 'Baron spawns at 20:00 in ranked. The 2026 season increased epic monster durability, so nearby lane priority and a safe entrance matter more than a blind start.',
       art: 'Ornn',
       one: {
-        mid: 'Push mid before joining Duo Two’s vision line; save the spell that denies the river entrance. If your lane cannot move, call it early so the pair can threaten a pick or tower instead of starting Baron.',
+        mid: 'Push mid before entering the team’s safe vision line; save the spell that denies the river entrance. If Duo Two is side, align that wave with your crash and call when you can connect or must trade.',
         adc: 'Arrive with the mid wave, an escort, and a clear damage or turn assignment. Jinx and Veigar should stand behind the controlled entrance, not walk first into the pit or jungle.'
       },
+      oneByPair: {
+        mj: 'Crash Mid before joining Jungle at a warded Baron entrance. Save your key control spell for the enemy approach and call if the return wave will pull you away.',
+        mt: 'Crash Mid as Top’s side wave arrives or Top groups at the entrance. State whether you can join the Baron turn or must hold Mid while Top draws an answer.'
+      },
       two: {
-        jungle: 'Track enemy Smite and choose “burn,” “turn,” or “bait” before hitting Baron. Sweep with your partner at the edge you can defend; stop damaging the monster when the enemy entry threatens a losing 50/50.',
+        jungle: 'Track enemy Smite and choose “burn,” “turn,” or “bait” before hitting Baron. Sweep with frontline cover while Duo One stays in follow-up range; stop damage when the enemy entry threatens a losing 50/50.',
         top: 'Ornn groups as a visible front line or flank with an exit; Garen pushes the opposite side only if the team can disengage and he can arrive or gain a structure. Call Teleport status before the first Baron step.'
       },
       sync: {
-        mj: 'One: “Mid crashes now; fear covers their river ramp.” Two: “Sweep with me; we turn if jungler walks in, burn only if they show bot.”',
-        mt: 'One: “Mid wave on their tower; I can meet top river.” Two: “I am grouped with R ready; take position before Baron, not after contact.”',
+        mj: 'One: “Mid crashes now; my control covers their river ramp.” Two: “Sweep with me; turn if jungler walks in, burn only if they show bot.”',
+        mt: 'One: “Mid wave on their tower; I can meet top river.” Two: “I hold top entrance with you; if I cannot start safely, make them walk in.”',
         aj: 'One: “Mid pushed, support beside me; I damage only on your burn call.” Two: “Enemy Smite unseen; hold the entrance and turn first.”',
         at: 'One: “We have mid push but cannot survive 4v5.” Two: “I group now; no side lane until your team can stall and my TP is usable.”'
       },
-      go: 'At least the approach lanes are controlled, key players are present, and there is a clear plan for the enemy jungler.',
+      go: 'The approach lanes are controlled, the required players can join or deliberately trade, and enemy Smite has an answer.',
+      goByPair: {
+        mj: 'Mid crash gives Jungle a protected Baron entrance; both agree turn or burn against enemy Smite.',
+        mt: 'Mid controls the entrance while Top groups or pins a defender with an equal side wave and usable TP.',
+        aj: 'ADC has mid wave and escort; Jungle holds Smite and a defensible entrance before calling burn or turn.',
+        at: 'ADC has protected mid pressure; Top joins the Baron fight or draws defenders with a side wave the team can safely delay.'
+      },
       abort: 'Enemy can enter unseen, your damage takes too long, Smite/ultimates are unavailable, or a side wave threatens your own base.',
-      fallback: 'Hold vision, pick the player who must ward, take a tower plate/structure on the live wave, or reset together for items.',
+      abortByPair: {
+        mj: 'Enemy jungle can enter unseen, Jungle lacks Smite, or Mid has no wave/entrance control.',
+        mt: 'Mid loses entrance control and Top cannot group or trade before the enemy finishes Baron.',
+        aj: 'ADC has no escort, Jungle lacks Smite, or the pit becomes an exposed 50/50.',
+        at: 'ADC cannot survive center without Top and Top has no timely TP or meaningful side trade.'
+      },
+      fallback: 'Hold safe vision, punish the next exposed warder, take structure value on a live wave, or coordinate item resets.',
       convert: 'After Baron, reset if needed and stagger two lanes so one defender cannot clear all empowered waves; preserve the buff carriers.',
-      drill: 'On each Baron attempt, stop at first attack: were mid and side waves favorable, was the enemy jungler accounted for, and did both agree burn or turn?'
+      drill: 'On each Baron attempt, stop at first attack: were mid and side waves favorable, was the enemy jungler accounted for, and did both agree burn or turn?',
+      drillByPair: {
+        mt: 'At first Baron attack, did Mid have a crash and did Top correctly choose group, TP, or a side trade?',
+        at: 'At first Baron attack, was ADC covered and did Top’s group/TP/side assignment actually improve the call?'
+      }
     },
     {
       id: 'clock-30-45', label: '30–45', title: 'Play one wave and one death timer at a time',
       read: 'Before leaving base, count living enemies, defensive cooldowns, both side waves, the closest live tower, and whether one pick opens the Nexus route.',
-      why: 'At this point a single unsupported death can decide the game; the duo edge is arriving together for a high-certainty finish.',
+      why: 'At this point a single unsupported death can decide the game; the duo edge is matching waves and protection for a high-certainty finish.',
       mechanic: 'From 30:00, 2026 waves spawn every 20 seconds. A long detour can miss multiple waves or expose a tower; short, repeated push-and-connect cycles are safer.',
       art: 'Garen',
       one: {
-        mid: 'Clear the wave that protects your structure, then move with Duo Two through the warded route. Save Vex fear, Ekko stun setup, or Xerath stun for the first diver or flank; a late pick is worth more than poke into fog.',
+        mid: 'Clear the wave that protects your structure, then call whether Duo Two groups or creates matched side pressure. Take only a warded route; save Vex fear, Ekko stun setup, or Xerath stun for the first diver or flank.',
         adc: 'State which threat can reach you and require a named escort before crossing into enemy jungle. Hit the closest safe target and reassess towers and death timers immediately after the first takedown.'
+      },
+      oneByPair: {
+        mj: 'Clear Mid, then take the warded route with Jungle on the same wave beat. Keep your control or escape ready for the first flank and call the finish before the next wave.',
+        mt: 'Clear Mid and tell Top whether your next wave creates a safe group fight or matched side pressure. Save your control for the defender who can interrupt the finish.'
       },
       two: {
         jungle: 'Do not face-check or start a monster while Duo One is catching a wave. Protect the carry’s entry, track enemy Smite, and call whether the pick means Nexus, Baron, structure, or reset.',
@@ -167,8 +258,20 @@ window.DUO_LATE = {
         at: 'One: “I cannot fight 4v5 while you are side.” Two: “I group this wave; if they send two for me next cycle, you advance.”'
       },
       go: 'Both are on the same map beat, an exit is known, and the chosen reward can be taken before respawns.',
+      goByPair: {
+        mj: 'Mid clears then joins Jungle through a warded route; both can take the chosen reward before respawns.',
+        mt: 'Mid and Top waves meet enemy structures together, or Top is already grouped for the decisive fight.',
+        aj: 'ADC reaches the fight with escort as Jungle protects the entry and calls the next structure or Baron.',
+        at: 'ADC is covered at center; Top groups or applies a matched side wave with TP and a safe central delay.'
+      },
       abort: 'The first player is caught, the carry has no cover, the wave is not at the target, or a defender can return before the final tower falls.',
-      fallback: 'Clear and reset the safest wave, defend the next entrance as two, and wait for a forced enemy move rather than guessing in darkness.',
+      abortByPair: {
+        mj: 'Mid or Jungle is picked before the wave arrives; clear and defend instead of entering fog short-handed.',
+        mt: 'Top is too far ahead of Mid’s wave or cannot join before a decisive central fight.',
+        aj: 'ADC has no escort or the winning wave dies before structures can fall.',
+        at: 'ADC cannot survive without Top while split, or Top’s side wave misses the central timing.'
+      },
+      fallback: 'Clear the safest wave, defend only the entrance you can cover, and wait for a forced enemy move rather than guessing in darkness.',
       convert: 'On a favorable pick, count the shortest legal path to Nexus through current waves and towers. Take Baron or another structure only when an immediate finish is unavailable.',
       drill: 'For every post-30 death, identify which partner was more than one response away and which wave or vision cue should have stopped the move.'
     }
@@ -178,12 +281,16 @@ window.DUO_LATE = {
     {
       id: 'map-vision', label: 'VISION', title: 'Enter fog in pairs, after the wave',
       read: 'Which lane gives the first move? Where was enemy jungle last seen? Which brush or wall hides the actual approach, and who has a ward or sweep?',
-      why: 'Vision is a route the duo can defend, not a ward score. One player draws the enemy response with a wave while the other secures the entrance.',
+      why: 'Vision has value when it protects the move the duo named. A pushed wave creates time for the entry player or reveals where defenders are going.',
       mechanic: 'Faelight wards reveal an extra region for 45 seconds and gain 25% radius in 2026 ranked. Mid river and side-lane locations create temporary information; the extra region expires.',
       art: 'Xerath',
       one: {
-        mid: 'Crash mid or keep the opponent pinned before escorting Duo Two to the river edge. Place the ward on the side you will actually play, then return in time to catch the next wave.',
+        mid: 'Crash mid or keep the opponent pinned before entering river with a nearby jungler. If Duo Two is Top, hold mid priority while they ward their side exit; place your own ward on the side you will actually play.',
         adc: 'Tell your support which wave you are crashing and remain behind the first person entering fog. Use safe long-range vision if available; do not walk alone to ward just because an objective timer is near.'
+      },
+      oneByPair: {
+        mj: 'Crash Mid and escort Jungle only to the river edge you can defend together. Ward that route, then return before your next wave is lost.',
+        mt: 'Hold Mid push while Top wards a side exit; place your own ward toward the same future objective. Do not leave Mid to chase Top through dark jungle.'
       },
       two: {
         jungle: 'Sweep the entrance only after your partner is in range to trade for a contest. If the enemy has lane priority, use a defensive ward line and wait for the wave to change.',
@@ -193,23 +300,46 @@ window.DUO_LATE = {
         mj: 'One: “Mid crashes, I walk with you to top banana brush.” Two: “Sweep now; if their mid leaves tower, we back together.”',
         mt: 'One: “I hold mid push.” Two: “I ward top-side exit as my wave advances; I stop at the same line as you.”',
         aj: 'One: “Bot wave is under them; support and I can escort river.” Two: “Sweep the pit entrance with us, then we choose dragon or reset.”',
-        at: 'One: “We have bot river vision for one wave.” Two: “I have a safe TP ward; if it dies, I will group on foot rather than promise a flank.”'
+        at: 'One: “We have bot river vision for one wave.” Two: “My TP ward is safe now; if it dies, I start moving early or trade top.”'
       },
-      go: 'The relevant wave is pushed, both players can protect each other at the entrance, and the vision covers the intended play.',
+      go: 'The relevant wave is pushed, the entry has cover or a safe cross-map counterpart, and vision serves the intended play.',
+      goByPair: {
+        mj: 'Mid crash lets Mid walk with Jungle to one river entrance; both can retreat if enemy mid moves.',
+        mt: 'Mid owns top-side first move while Top wards the side exit, or their waves hold defenders on separate fronts.',
+        aj: 'ADC crash and support cover let ADC escort Jungle to bot river without losing the return wave.',
+        at: 'ADC can ward bot safely with support while Top wards the side exit or names a usable TP landing.'
+      },
       abort: 'Your side is being pushed in, the enemy can collapse from two unknown angles, or the ward line is expiring before the play.',
+      abortByPair: {
+        mj: 'Mid loses first move or two enemies can collapse before Jungle’s sweep ends.',
+        mt: 'Mid cannot hold the approach and Top’s side exit is dark; do not both enter fog.',
+        aj: 'ADC lacks support escort or bot wave is coming in; Jungle takes defensive vision instead.',
+        at: 'ADC’s bot entry is unsafe or Top’s TP ward is gone; protect separate exits.'
+      },
       fallback: 'Place defensive vision, preserve health, and plan the next wave that can reopen the entrance.',
       convert: 'Use the information immediately for a pick, safe camp, structure, or objective setup; refresh the route if the move takes longer than the vision window.',
-      drill: 'Count deaths while placing vision: was a partner in trade range, and had the adjacent wave already given first move?'
+      drill: 'Count deaths while placing vision: was the entry protected or timed to the partner’s wave, and did the ward serve a declared play?'
     },
     {
       id: 'map-objective', label: 'EPIC OBJECTIVE', title: 'Crash, enter, turn or burn',
-      read: 'Is the adjacent mid and side wave crashed? Can both players arrive? Where is enemy Smite, who has key ultimates, and what does the enemy trade if they give the monster?',
+      read: 'Are adjacent waves crashed, who can physically contest, and who instead creates a cross-map trade? Locate enemy Smite, key ultimates, and the cost of giving the monster.',
+      readByPair: {
+        mj: 'Is Mid crashed as Jungle reaches the pit? Check enemy Smite, your 2v2, and which river entrance you can defend.',
+        mt: 'Can Mid contest with the team while Top groups by safe TP, or will Top’s side wave create a stronger trade?',
+        aj: 'Can ADC and support leave a crashed bot or mid wave as Jungle enters with Smite? Check enemy mid and jungle first move.',
+        at: 'Can ADC contest locally with support, and is Top’s TP landing safe and timely? If not, what top structure is the trade?'
+      },
       why: 'The strongest objective call often starts with a wave, then a vision line, then a choice to fight or take the monster.',
       mechanic: '2026 epic monsters gained durability, making the time spent inside the pit more punishable. Smite does not replace lane priority or a protected entrance.',
       art: 'Rammus',
       one: {
-        mid: 'Push the nearby wave and move with the jungler on the controlled side. Hold Vex fear, Ekko stun setup, or Xerath stun for an entrance or diver; announce if an enemy shove denies your first move.',
+        mid: 'Push the nearby wave and announce when you can enter controlled river or support Duo Two’s opposite-side trade. Hold Vex fear, Ekko stun setup, or Xerath stun for an entrance or diver.',
         adc: 'Crash bot or mid with support, then enter behind your frontline. State whether you will hit the monster or hold damage for the approaching enemy; do not abandon a huge wave under your own tower for a speculative start.'
+      },
+      oneByPair: {
+        mj: 'Crash Mid, then enter the controlled river with Jungle on the same beat. Hold your key spell for the enemy entrance and call “no move” if Mid is pinned.',
+        mt: 'Crash Mid so the enemy mid must clear while Top groups by safe TP or threatens an opposite structure. Tell Top whether you can contest or only trade.',
+        at: 'Crash bot or mid with support before entering the objective area. Ask Top for safe TP timing or a clear side trade; do not abandon a large incoming wave.'
       },
       two: {
         jungle: 'State the plan as “turn,” “burn,” or “trade” before first damage and announce Smite state. If lanes cannot leave, take a camp or opposite-side structure instead of asking them to pay two waves for a river coin flip.',
@@ -221,9 +351,27 @@ window.DUO_LATE = {
         aj: 'One: “Bot crash now, support with me; I can hit dragon.” Two: “Enemy Smite top; burn after our ward lands, then reset.”',
         at: 'One: “Bot has push but their mid moves first.” Two: “I cannot TP into that river; we trade top tower and protect bot exit.”'
       },
-      go: 'Adjacent lanes can move, the entrance is defensible, and both players agree on the enemy-jungler response.',
-      abort: 'A partner says no priority, Smite is unavailable against a nearby enemy jungler, or the objective cannot die before a collapse.',
+      go: 'The contesting lanes can move, the entrance is defensible, and both players agree whether to contest or trade.',
+      goByPair: {
+        mj: 'Mid can move first and Jungle has Smite, health, and a protected entrance; both agree turn or burn.',
+        mt: 'Mid contests when Top joins by safe TP; otherwise Mid delays safely while Top converts a side structure.',
+        aj: 'ADC and support can leave the crashed wave while Jungle has Smite and a covered bot entrance.',
+        at: 'ADC contests when Top joins by safe TP; otherwise ADC delays with the team as Top takes an opposite tower.'
+      },
+      abort: 'Required nearby priority is missing, enemy Smite has a winning entry, or the objective cannot die before a collapse.',
+      abortByPair: {
+        mj: 'Mid cannot move, enemy Jungle enters unseen, or allied Smite is unavailable.',
+        mt: 'Mid loses nearby priority and Top cannot TP or force an equal opposite-side trade.',
+        aj: 'ADC/support are pinned, Jungle lacks Smite, or bot-side vision cannot cover the entry.',
+        at: 'ADC/support cannot contest and Top has neither timely TP nor a safe structure trade.'
+      },
       fallback: 'Trade the opposite structure/camp or set vision for the next spawn; a defended wave may be worth more than a low-percentage contest.',
+      fallbackByPair: {
+        mj: 'Mid catches the wave while Jungle takes a safe camp or wards the next entrance; reconnect on the next crash.',
+        mt: 'Mid holds the nearby wave as Top takes the safe opposite structure or groups early for the next spawn.',
+        aj: 'ADC catches the bot wave while Jungle trades a safe camp or opposite objective; reset together later.',
+        at: 'ADC protects local farm while Top converts their own wave into a safe tower hit or starts moving for the next spawn.'
+      },
       convert: 'After securing the monster, leave through the known exit and reset or push the nearest live wave; do not give back the objective in an unplanned fight.',
       drill: 'For each lost epic monster fight, mark the lane waves at first attack and whether the pair had agreed turn, burn, or trade.'
     },
@@ -248,10 +396,22 @@ window.DUO_LATE = {
         at: 'One: “Bot turret is one plate from falling.” Two: “Enemy jungle shows top; take your plate and recall before I lose track.”'
       },
       go: 'A wave is at the tower, the collapse path is known, and a safe retreat remains after the plate or tower falls.',
+      goByPair: {
+        mj: 'Mid wave tanks tower while Jungle covers the gank path; Mid leaves when the last safe hit is spent.',
+        mt: 'Mid and Top waves reach their towers together, forcing separate defenders with known retreat paths.',
+        aj: 'ADC wave and support reach bot tower while Jungle covers the actual collapse path for one wave.',
+        at: 'Top pressure reveals the enemy response as ADC and support take a covered bot hit; both can exit.'
+      },
       abort: 'Your last minion dies, enemy mid/support disappears, or the expected defender returns before the hit pays.',
-      fallback: 'Use the crash for a ward, reset, or counterjungle camp; do not stay in turret range with no minion cover.',
-      convert: 'After first tower, name the next lane assignment and enter the newly opened jungle only on a pushed wave.',
-      drill: 'For every turret death, freeze the replay at the last allied minion and note whether the pair still had a cover and exit plan.'
+      abortByPair: {
+        mj: 'Mid’s last minion dies or Jungle loses sight of the collapse route.',
+        mt: 'One wave dies before the other reaches tower or either player loses a safe exit.',
+        aj: 'Bot’s last minion dies, support leaves, or Jungle loses collapse cover.',
+        at: 'ADC has no support cover or Top cannot identify which enemy is leaving their lane.'
+      },
+      fallback: 'Use the crash for a ward, reset, or safe local resource; do not stay in turret range with no minion cover.',
+      convert: 'After first tower, name the next lane assignment; enter the newly opened jungle only with a pushed wave and cover.',
+      drill: 'For every death at a turret, freeze the replay at the last allied minion and check the pair’s cover and exit plan.'
     },
     {
       id: 'map-side', label: 'SIDE LANE', title: 'Pressure two places on the same beat',
@@ -264,18 +424,34 @@ window.DUO_LATE = {
         adc: 'Own the safer mid wave with support or a frontline, then move only when the side wave forces a response. If your team cannot disengage while Duo Two is side, say so before it reaches enemy territory.'
       },
       two: {
-        jungle: 'Track which enemy moves to answer Duo One’s side wave and be ready to take the vacated entrance. Do not start a fight while your partner is still returning; protect the center until they reconnect.',
+        jungle: 'Track who answers the designated side wave, whether Duo One is Mid or another teammate supplies it. Take the vacated entrance only after Duo One can join; protect the center until then.',
         top: 'Build the side wave to meet Duo One’s mid push rather than running ahead of it. Call enemy count, Teleport, and whether you are drawing one defender or need immediate extraction.'
+      },
+      twoByPair: {
+        mj: 'Track who answers Duo One’s side wave and hold the center until Mid returns. Enter the vacated river path only after Mid can follow.',
+        aj: 'Track who answers the team’s side wave while ADC farms mid with support. Protect ADC’s center route before claiming the vacated river entrance.'
       },
       sync: {
         mj: 'One: “I push bot one wave; back to mid in ten.” Two: “I hold the center and do not engage until you return.”',
         mt: 'One: “Mid wave meets tower in twelve.” Two: “My top wave meets at twelve; we pressure both, then leave when two disappear.”',
         aj: 'One: “Mid wave pushed, I am behind support.” Two: “I use their side defender’s movement to enter river; you do not follow through fog.”',
-        at: 'One: “I can safely hold mid, no hard engage from our team.” Two: “Garen pushes bot to tower, TP ready; if their mid vanishes I back off.”'
+        at: 'One: “I can safely hold mid, no hard engage from our team.” Two: “I push bot to tower, TP ready; if their mid vanishes I back off.”'
       },
-      go: 'Both pressure points are live, the side pusher has vision or escape, and the four-player group can delay a fight.',
-      abort: 'Central wave is at your own tower, two enemies disappear toward the side player, or the grouped team cannot survive a 4v5.',
-      fallback: 'Trim and collect the side wave at a safe line, group for the current fight, and reattempt on the next matched pair of waves.',
+      go: 'Both pressure points are live, the side player has vision or escape, and the remaining group can delay a fight.',
+      goByPair: {
+        mj: 'Mid’s side wave pressures as Jungle holds center until Mid reconnects; no fight begins during the gap.',
+        mt: 'Mid and Top push different waves to the same depth; each has an exit or a way to join the next fight.',
+        aj: 'ADC stays mid with support while Jungle uses an ally’s side wave to enter river; ADC never solos the deep side.',
+        at: 'ADC and support hold the central wave; Top’s side wave reaches tower with vision and TP or a safe retreat.'
+      },
+      abort: 'Central wave is at your own tower, two enemies disappear toward the side player, or the grouped team cannot survive short-handed.',
+      abortByPair: {
+        mj: 'Jungle’s center cannot delay a fight before Mid returns, or two enemies vanish toward Mid.',
+        mt: 'Mid and Top waves are out of phase or both retreat paths are dark.',
+        aj: 'ADC is exposed mid while the team’s side player advances; Jungle protects ADC instead.',
+        at: 'ADC’s group cannot delay 4v5, Top has no exit/TP, or two enemies disappear toward Top.'
+      },
+      fallback: 'Trim and collect the side wave at a safe line, group before the next fight, and reattempt on matched waves.',
       convert: 'When an enemy answers the side, spend the temporary numbers edge on a tower, controlled jungle entrance, or objective; if two answer, the side player exits while the team advances.',
       drill: 'At each split-push death, compare side and mid wave positions. Were they level, or was one player a full wave ahead of the team?'
     },
@@ -287,21 +463,37 @@ window.DUO_LATE = {
       art: 'Ornn',
       one: {
         mid: 'Clear the final defensive wave or escort the winning wave into base, depending on whose structures are threatened. Use control spells to block respawning defenders while the carry damages the nearest necessary structure.',
-        adc: 'State your health, damage, and exact safe structure target before entering base. Jinx or Veigar should hit the reachable tower/inhibitor/Nexus while a partner screens the flank; do not chase a retreating kill past the wave.'
+        adc: 'State your health, damage, and exact safe structure target before entering base. Jinx or Veigar hits the reachable structure behind frontline cover; Duo Two calls whether they join the finish or pin a defender side.'
+      },
+      oneByPair: {
+        aj: 'Name the exact tower, inhibitor, or Nexus you can hit and your remaining health. Stay behind frontline while Jungle protects the flank and exit.',
+        at: 'Name the exact structure your current wave can reach. Ask Top to join the finish if it is open; keep hitting only if Top’s side pressure actually pins a defender.'
       },
       two: {
-        jungle: 'Call the live defender count and whether Smite is needed for a different plan. Protect the carry and mark the exit if Nexus is not possible; do not peel away for a camp during a live finishing wave.',
+        jungle: 'Call the live defender count and whether Smite is needed for another plan. Protect Duo One or the designated structure hitter and mark the exit; do not peel away for a camp during a live finishing wave.',
         top: 'Tank or threaten defenders while preserving enough health to stay with the structure push. If split, make your wave meet the central wave; Teleport only to a ward that lands before the fight is decided.'
       },
       sync: {
-        mj: 'One: “Mid wave enters base; I hold cage on their respawn.” Two: “I cover the flank. Tower, inhibitor, then Nexus if their timers allow.”',
+        mj: 'One: “Mid wave enters base; I hold my control for respawns.” Two: “I cover the flank. Tower, inhibitor, then Nexus if their timers allow.”',
         mt: 'One: “Their mid inhibitor is open, my wave enters now.” Two: “My side wave reaches their tower with it; we collapse only after they split.”',
         aj: 'One: “I have damage for Nexus if you screen two respawns.” Two: “I peel; ignore the chase and hit the structure.”',
         at: 'One: “Mid wave is in base, I can hit.” Two: “I join you now; no extra side wave when the Nexus is open.”'
       },
-      go: 'A live wave can tank the route and the pair can remove remaining structures before enough defenders return.',
+      go: 'A live wave can tank the route and the players at the base can remove remaining structures before defenders return.',
+      goByPair: {
+        mj: 'Mid and Jungle escort one live wave into base, with control and cover for respawning defenders.',
+        mt: 'Mid’s wave can end with Top already grouped, or Top’s matched side wave pins the last defender.',
+        aj: 'ADC can damage the remaining structures behind Jungle and frontline cover before respawns.',
+        at: 'ADC has a live finishing wave and Top joins in time; a separate side push continues only if it pins a defender.'
+      },
       abort: 'The wave dies, the carry is too low, or the necessary tower cannot fall before respawn.',
-      fallback: 'Take only the safe structure, leave together, reset, then use the opened lane to pressure the next objective. Do not donate shutdowns inside the base.',
+      abortByPair: {
+        mj: 'Mid wave dies or the pair cannot cover remaining defenders before respawn.',
+        mt: 'Mid and Top waves miss each other or Top cannot arrive before defenders respawn.',
+        aj: 'ADC is too low to hit or the frontline cannot screen the last defender.',
+        at: 'ADC’s finishing wave dies or Top cannot join or pin the remaining defender in time.'
+      },
+      fallback: 'Take only the safe structure, leave by known exits, reset on matching waves, and use the opened lane next. Do not donate shutdowns inside the base.',
       convert: 'Nexus is the final objective when open; otherwise set the next two-wave push and deny the enemy an uncontested reset.',
       drill: 'After every won fight past 20 minutes, pause before the first objective call: was Nexus already reachable with the current wave and death timers?'
     }
@@ -311,7 +503,13 @@ window.DUO_LATE = {
     {
       id: 'recovery-no-prio', label: 'NO PRIORITY', title: 'Say “cannot move” early enough to reroute',
       read: 'Your wave is at your turret or the opponent controls the river entrance. Can either partner leave without losing XP, dying, or arriving after the fight?',
-      why: 'The pair prevents a bad fight when the lane player names the cost before Duo Two crosses the river.',
+      readByPair: {
+        mj: 'Mid is pinned: when can Mid clear, and can Jungle wait or reroute before crossing river?',
+        mt: 'Which of Mid or Top is pinned, and can the free lane create a cross-map gain without demanding a late rotation?',
+        aj: 'ADC is catching bot: can support move, and can Jungle delay dragon until the wave is repaired?',
+        at: 'ADC cannot leave bot: can Top trade a top wave or use a real TP window without promising an impossible walk?'
+      },
+      why: 'The pair prevents a bad fight when the pinned player names the wave cost before the other commits to a contest or cross-map trade.',
       mechanic: 'The pushing lane can usually move first. Health, cooldowns, and enemy positions can override that apparent priority; wave location alone is not permission to fight.',
       art: 'Rammus',
       one: {
@@ -328,17 +526,29 @@ window.DUO_LATE = {
         aj: 'One: “Bot wave at my turret, support low; no dragon.” Two: “I cancel the start and cover your clear, then we reset.”',
         at: 'One: “Bot cannot move; enemy support is first to river.” Two: “I keep top pressure and save TP; we trade instead of arriving late.”'
       },
-      go: 'The pinned wave is cleared, both can still reach the play, and an enemy collapse can be seen.',
+      go: 'The pinned wave is cleared or the pair has agreed to trade elsewhere, and the enemy response can be seen.',
+      goByPair: {
+        mj: 'Mid clears the pinned wave, then calls the first safe river step; Jungle waits or reroutes until then.',
+        mt: 'Mid and Top repair their separate waves before an upper-river move, or one takes a cross-map structure.',
+        aj: 'ADC clears bot with support before dragon; Jungle cancels a start that requires ADC to abandon the wave.',
+        at: 'ADC clears bot while Top preserves top pressure; a TP contest needs a safe landing and bot first move.'
+      },
       abort: 'The play would require walking through an unseen enemy or sacrificing a stacked wave for no guaranteed return.',
-      fallback: 'Take the wave and local camp, ward defensively, and announce the next wave on which priority can change.',
+      abortByPair: {
+        mj: 'Jungle would cross river before Mid can clear, or Mid must sacrifice a stacked wave.',
+        mt: 'Mid or Top must abandon a stacked wave to reach the other; trade pressure instead.',
+        aj: 'Jungle needs ADC to leave a stacked bot wave or support cannot leave lane.',
+        at: 'Top cannot reach bot in time and ADC lacks local priority; do not treat a distant TP as guaranteed.'
+      },
+      fallback: 'Take the safe local wave or camp, ward defensively, and announce the next wave on which priority can change.',
       convert: 'If the opponent leaves, punish the tower-facing wave or take the opposite-side resource with a clear escape.',
       drill: 'Count contests started while a partner said or should have said “cannot move.” Identify the first moment the reroute was available.'
     },
     {
       id: 'recovery-behind', label: 'BEHIND', title: 'Shrink the loss, then reopen one side',
       read: 'Who has safe wave clear, who holds a shutdown, what towers are exposed, and which objective can be traded for gold, XP, or a plate?',
-      why: 'A losing duo needs shared access to income and one protected route, not five separate comeback attempts in darkness.',
-      mechanic: '2026 role quests reward assigned-lane presence, and permanent plates give incremental structure value. A defended wave and safe plate can keep a losing pair relevant.',
+      why: 'A losing duo needs safe income in each assigned role and one protected next move, not separate comeback attempts in darkness.',
+      mechanic: 'Before completion, 2026 role quests reward assigned-lane presence; permanent plates give incremental structure value. A defended wave and safe plate can keep a losing pair relevant.',
       art: 'Vex',
       one: {
         mid: 'Clear from safety and deny the enemy a free mid wave plus river entrance. Save your fear, stun, or escape for dives; take the first unguarded side wave only after Duo Two knows your route.',
@@ -355,15 +565,21 @@ window.DUO_LATE = {
         at: 'One: “I farm mid with support; no 4v5.” Two: “I group for the tower defense; I split only when you can safely delay.”'
       },
       go: 'The pair can gain farm or defend a tower with an escape, or an enemy overextension creates a clear numbers advantage.',
+      goByPair: {
+        mj: 'Mid can clear safely while Jungle covers the same quadrant, then both punish an enemy overstep.',
+        mt: 'Mid holds the center as Top collects a safe side wave or groups for a defended tower fight.',
+        aj: 'ADC farms with support while Jungle protects the entrance; they fight only an enemy overstep.',
+        at: 'ADC catches protected mid waves as Top groups for defense or pressures a side wave the enemy must answer.'
+      },
       abort: 'A comeback play starts in unwarded enemy space or requires the weaker carry to lead the entry.',
-      fallback: 'Concede the low-value contest, protect the next wave and own jungle quadrant, then reset for item completion.',
+      fallback: 'Concede the low-value contest, protect the next wave and your controlled map quadrant, then reset for item completion.',
       convert: 'After one pick or safe tower defense, push one lane far enough to place vision, then take the newly available camp, plate, or objective.',
-      drill: 'After falling behind, mark the first two forced fights. Could the duo have gained a wave and camp instead, and did the carry reach their next item sooner?'
+      drill: 'After falling behind, mark the first two forced fights. Could the duo have gained safe waves or a camp instead, and did the carry reach the next item sooner?'
     },
     {
       id: 'recovery-failed', label: 'FAILED PLAY', title: 'End the failed play before it becomes three deaths',
-      read: 'Did the gank fail but burn a summoner, did the opponent keep wave control, are key ultimates down, and where is the next safe wave?',
-      why: 'A failed engage is information. The duo keeps its edge by resetting the plan before emotion drives a second, worse entry.',
+      read: 'Did the committed play fail but burn a summoner or draw a defender? Who controls the next wave, which cooldowns are down, and where can each partner exit?',
+      why: 'A failed play is information. The duo keeps its edge by repairing both wave plans before emotion drives a second, worse commitment.',
       mechanic: 'A burned Flash can create a future angle, but it does not repay a lost wave by itself. The next move still requires wave and route alignment.',
       art: 'Ekko',
       one: {
@@ -375,16 +591,22 @@ window.DUO_LATE = {
         top: 'If your Teleport or ultimate was spent, announce the cooldown and repair the side wave. If the cross-map play failed, do not deepen the split to “make up for it” without central pressure.'
       },
       sync: {
-        mj: 'One: “Their Flash down, my fear down, wave coming to me.” Two: “We exit; I clear one camp and return only when fear and wave align.”',
+        mj: 'One: “Their Flash down, my control down, wave coming to me.” Two: “We exit; I clear one camp and return when your setup and wave align.”',
         mt: 'One: “Roam failed, I lost mid push.” Two: “I stop the top dive and hold my wave; we retry after both crashes.”',
         aj: 'One: “No kill, enemy Heal down; I need this wave crashed.” Two: “I help only this wave, then reset with you.”',
         at: 'One: “Dragon fight lost; mid must be cleared.” Two: “I stop side pressure and cover the retreat, TP unavailable for the next cycle.”'
       },
       go: 'A second attempt has refreshed cooldowns, a new wave window, and confirmed enemy location.',
+      goByPair: {
+        mj: 'Mid control and wave are reset; Jungle’s next route is efficient and enemy jungle location is known.',
+        mt: 'Mid and Top waves can be synchronized again; a second top play has vision and required cooldowns.',
+        aj: 'ADC has repaired bot wave and support can join; Jungle approaches on a fresh route, not a visible hover.',
+        at: 'ADC bot and Top side waves are reset; the next play is a timed trade or safe TP, not a revenge fight.'
+      },
       abort: 'The only reason for the second attempt is frustration, or the opponent now has first move and more health.',
       fallback: 'Exit, collect the next safe wave/camp, reset, and plan one new objective together.',
       convert: 'Store the burned summoner or ward information and exploit it on a later synchronized wave; do not repay a mistake with another sacrifice.',
-      drill: 'For each failed early play, count the next 60 seconds: did the duo lose an extra death, wave, or camp after the original mistake?'
+      drill: 'For each failed play, count the next 60 seconds: did the duo lose an extra death, wave, or resource after the original mistake?'
     },
     {
       id: 'recovery-one-pick', label: 'LATE PICK / FINISH', title: 'One pick: defend, end, or reset—call it now',
@@ -393,11 +615,15 @@ window.DUO_LATE = {
       mechanic: 'Late death timers are long, while post-30 waves spawn every 20 seconds. A missed wave can invalidate an otherwise correct finishing call.',
       art: 'Ornn',
       one: {
-        mid: 'If an ally was picked, clear the nearest threatening wave before the enemy can use it on your tower. If an enemy was picked, move with Duo Two on the live winning wave and hold control for the remaining defenders.',
+        mid: 'If an ally was picked, clear the nearest threatening wave before the enemy can use it on your tower. If an enemy was picked, call the winning wave and whether Duo Two joins or pins defenders from another lane.',
         adc: 'If alive, state your DPS, health, and whether you can hit structures through the surviving threat. If dead, immediately communicate enemy cooldowns and let Duo Two defend waves rather than attempt a hero steal.'
       },
+      oneByPair: {
+        mj: 'If an ally is picked, clear the threatening Mid wave and keep Jungle from a short-handed Baron. If an enemy falls, call the live finish wave and hold control for remaining defenders.',
+        mt: 'If an ally is picked, clear Mid while Top groups for defense. If an enemy falls, call the finishing wave and whether Top must join or can pin the last defender.'
+      },
       two: {
-        jungle: 'Count enemy and ally Smite status, keep the carry’s route clear, and call “Nexus,” “Baron,” “tower,” or “reset” once. If the duo lost a member, defend the wave and delay rather than starting a short-handed monster.',
+        jungle: 'Count enemy and ally Smite status, keep Duo One’s route clear, and call “Nexus,” “Baron,” “tower,” or “reset” once. If the duo lost a member, defend the wave and delay rather than starting a short-handed monster.',
         top: 'Join the central wave when it can end; a side wave is useful only if it reaches a structure in the same window. If the carry was picked, front the remaining wave clear and do not offer the enemy a second death.'
       },
       sync: {
@@ -406,8 +632,20 @@ window.DUO_LATE = {
         aj: 'One: “I can hit inhibitor tower now if you screen assassin.” Two: “I peel the flank; we leave together when the wave dies.”',
         at: 'One: “Enemy carry dead, my wave at Nexus turret.” Two: “I leave side and join the finish; no extra top tower.”'
       },
-      go: 'A live wave and remaining damage can finish the chosen structure before respawn, with both players in cover range.',
+      go: 'A live wave and remaining damage can finish the chosen structure before respawn, with the attacker covered and the partner’s pressure accounted for.',
+      goByPair: {
+        mj: 'Mid wave enters base while Jungle screens the remaining defenders; both can finish before respawn.',
+        mt: 'Mid and Top have a finishing wave or matched base pressure; Top groups if the Nexus route is open.',
+        aj: 'ADC can hit the final structure with frontline and Jungle cover before defenders return.',
+        at: 'ADC has safe structure damage while Top either joins the finish or holds a defender on a matching side wave.'
+      },
       abort: 'The wave dies, a key defender returns before the final structure, or your surviving carry cannot enter safely.',
+      abortByPair: {
+        mj: 'Mid wave dies or Mid and Jungle cannot hold the remaining defender long enough to finish.',
+        mt: 'Top is still side when Mid’s base wave dies, or either lane lacks damage before respawn.',
+        aj: 'ADC cannot enter safely or the wave dies before Jungle can protect the final hit.',
+        at: 'ADC’s wave dies or Top cannot group or hold a defender before respawn.'
+      },
       fallback: 'Take the reachable tower or objective without donating shutdowns, reset, and force the next matched wave.',
       convert: 'When Nexus is open, commit to it; otherwise bank the closest guaranteed structure or Baron, then use the next wave to finish.',
       drill: 'Review every post-30 pick and name the highest guaranteed reward visible at the moment of the pick, not after the team dispersed.'
